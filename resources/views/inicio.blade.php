@@ -49,7 +49,7 @@
             <!-- /widget-header -->
             <div class="widget-content">
               <div class="shortcuts">
-                <a href="javascript:;" class="shortcut">
+                <a href="{{ route('users.index') }}" class="shortcut">
                     <i class="shortcut-icon icon-user"></i>
                     <span class="shortcut-label">Usuarios</span>
                 </a>
