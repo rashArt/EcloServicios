@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\TipoRequest;
 use App\Http\Controllers\Controller;
+use App\TipoServicio;
+use Laracasts\Flash\Flash;
 
 class TipoServiciosController extends Controller
 {
@@ -16,7 +19,9 @@ class TipoServiciosController extends Controller
      */
     public function index()
     {
-        //
+        $tipo = TipoServicio::all();
+
+        return view('tipos.index')->with('tipo', $tipo);
     }
 
     /**
@@ -26,7 +31,7 @@ class TipoServiciosController extends Controller
      */
     public function create()
     {
-        //
+        return view('tipos.create');
     }
 
     /**
@@ -35,9 +40,15 @@ class TipoServiciosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TipoRequest $request)
     {
-        //
+        $tipo = new TipoServicio();
+        $tipo->nombre = $request->nombre;
+        $tipo->save();
+
+        Flash::success('Se ha registrado el tipo de servicio exitosamente!');
+
+        return redirect()->route('servicios.tipos.index');
     }
 
     /**
@@ -59,7 +70,9 @@ class TipoServiciosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tipo = TipoServicio::find($id);
+
+        return view('tipos.edit')->with('tipo', $tipo);
     }
 
     /**
@@ -71,7 +84,13 @@ class TipoServiciosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $tipo = TipoServicio::find($id);
+        $tipo->nombre   = $request->nombre;
+        $tipo->save();
+
+        Flash::success('Se ha actualizado el tipo de servicio exitosamente!');
+
+        return redirect()->route('servicios.tipos.index');
     }
 
     /**
@@ -82,6 +101,10 @@ class TipoServiciosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        TipoServicio::find($id)->delete();
+
+        Flash::warning('Se ha eliminado el tipo de servicio exitosamente!');
+
+        return redirect()->route('servicios.tipos.index');
     }
 }

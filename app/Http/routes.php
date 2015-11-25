@@ -70,4 +70,13 @@ Route::group(['middleware' => 'auth'], function () {
         'as' => 'users.destroy'
         ]
     );
+
+    Route::resource('servicios/tipos', 'TipoServiciosController');
+    //nueva ruta funcion borrar del modulo tipos
+    Route::get('servicios/tipos/{id}/destroy',
+        [
+        'uses' => 'TipoServiciosController@destroy',
+        'as' => 'servicios/tipos.destroy'
+        ]
+    );
 });

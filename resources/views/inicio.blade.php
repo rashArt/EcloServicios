@@ -53,7 +53,7 @@
                     <i class="shortcut-icon icon-user"></i>
                     <span class="shortcut-label">Usuarios</span>
                 </a>
-                <a href="javascript:;" class="shortcut">
+                <a href="{{ route('servicios.tipos.index') }}" class="shortcut">
                     <i class="shortcut-icon icon-list-alt"></i>
                     <span class="shortcut-label">Tipos de Servicios</span>
                 </a>

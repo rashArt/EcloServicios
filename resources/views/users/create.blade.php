@@ -8,125 +8,88 @@
       <div class="row">
         <div class="span12">
 
+          <section class="content-header">
+            <ol class="breadcrumb">
+              <li><a href="{{ route('inicio') }}"><i class="fa fa-dashboard"></i> Inicio</a></li>
+              <li><a href="{{ route('users.index') }}"><i class="fa fa-dashboard"></i> Usuarios</a></li>
+              <li class="active"> Crear</li>
+            </ol>
+          </section>
+
           <div class="widget ">
             <div class="widget-header">
                 <i class="icon-user"></i>
                 <h3>Registro de Usuarios</h3>
             </div> <!-- /widget-header -->
             <div class="widget-content">
-
-                <form id="edit-profile" class="form-horizontal">
+                @if (count($errors) > 0)
+                  <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <ul>
+                        @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                        @endforeach
+                      </ul>
+                  </div>
+                @endif
+                {!! Form::open(['route' => 'users.store', 'method' => 'POST', 'class' => 'form-horizontal']) !!}
                   <fieldset>
                     <div class="control-group">
-                      <label class="control-label" for="username">Username</label>
+                      {!! Form::label('nombre', 'Nombre', ['class' => 'control-label']) !!}
                       <div class="controls">
-                        <input type="text" class="span6 disabled" id="username" value="Example" disabled>
-                        <p class="help-block">Your username is for logging in and cannot be changed.</p>
+                        {!! Form::text('nombre', null, ['class' => 'span6']) !!}
                       </div> <!-- /controls -->
                     </div> <!-- /control-group -->
                     <div class="control-group">
-                      <label class="control-label" for="firstname">First Name</label>
+                      {!! Form::label('apellido', 'Apellido', ['class' => 'control-label']) !!}
                       <div class="controls">
-                        <input type="text" class="span6" id="firstname" value="John">
+                        {!! Form::text('apellido', null, ['class' => 'span6']) !!}
                       </div> <!-- /controls -->
                     </div> <!-- /control-group -->
                     <div class="control-group">
-                      <label class="control-label" for="lastname">Last Name</label>
+                      {!! Form::label('cedula', 'Cedula', ['class' => 'control-label']) !!}
                       <div class="controls">
-                        <input type="text" class="span6" id="lastname" value="Donga">
+                        {!! Form::text('cedula', null, ['class' => 'span6']) !!}
                       </div> <!-- /controls -->
                     </div> <!-- /control-group -->
                     <div class="control-group">
-                      <label class="control-label" for="email">Email Address</label>
+                      {!! Form::label('telefono', 'Telefono', ['class' => 'control-label']) !!}
                       <div class="controls">
-                        <input type="text" class="span4" id="email" value="john.donga@egrappler.com">
-                      </div> <!-- /controls -->
-                    </div> <!-- /control-group -->
-                    <br /><br />
-                    <div class="control-group">
-                      <label class="control-label" for="password1">Password</label>
-                      <div class="controls">
-                        <input type="password" class="span4" id="password1" value="thisispassword">
+                        {!! Form::text('telefono', null, ['class' => 'span6']) !!}
                       </div> <!-- /controls -->
                     </div> <!-- /control-group -->
                     <div class="control-group">
-                      <label class="control-label" for="password2">Confirm</label>
+                      {!! Form::label('email', 'Correo Electronico', ['class' => 'control-label']) !!}
                       <div class="controls">
-                        <input type="password" class="span4" id="password2" value="thisispassword">
+                        {!! Form::email('email', null, ['class' => 'span6']) !!}
                       </div> <!-- /controls -->
                     </div> <!-- /control-group -->
                     <div class="control-group">
-                      <label class="control-label">Checkboxes</label>
-                        <div class="controls">
-                        <label class="checkbox inline">
-                          <input type="checkbox"> Option 01
-                        </label>
-                        <label class="checkbox inline">
-                          <input type="checkbox"> Option 02
-                        </label>
-                      </div>    <!-- /controls -->
-                    </div> <!-- /control-group -->
-                    <div class="control-group">
-                      <label class="control-label">Radio Buttons</label>
-                        <div class="controls">
-                        <label class="radio inline">
-                          <input type="radio"  name="radiobtns"> Option 01
-                        </label>
-                        <label class="radio inline">
-                          <input type="radio" name="radiobtns"> Option 02
-                        </label>
-                      </div>  <!-- /controls -->
-                    </div> <!-- /control-group -->
-                    <div class="control-group">
-                      <label class="control-label" for="radiobtns">Combined Textbox</label>
-                        <div class="controls">
-                           <div class="input-prepend input-append">
-                              <span class="add-on">$</span>
-                              <input class="span2" id="appendedPrependedInput" type="text">
-                              <span class="add-on">.00</span>
-                            </div>
-                          </div>  <!-- /controls -->
-                    </div> <!-- /control-group -->
-                    <div class="control-group">
-                      <label class="control-label" for="radiobtns">Textbox with Buttons </label>
+                      {!! Form::label('password', 'Contraseña', ['class' => 'control-label']) !!}
                       <div class="controls">
-                        <div class="input-append">
-                          <input class="span2 m-wrap" id="appendedInputButton" type="text">
-                          <button class="btn" type="button">Go!</button>
-                        </div>
-                      </div>  <!-- /controls -->
+                        {!! Form::password('password', ['class' => 'span6']) !!}
+                      </div> <!-- /controls -->
                     </div> <!-- /control-group -->
                     <div class="control-group">
-                      <label class="control-label" for="radiobtns">Dropdown in a button group</label>
+                      {!! Form::label('nivel', 'Nivel de usuario', ['class' => 'control-label']) !!}
                       <div class="controls">
-                        <div class="btn-group">
-                          <a class="btn btn-primary" href="#"><i class="icon-user icon-white"></i> User</a>
-                          <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
-                          <ul class="dropdown-menu">
-                            <li><a href="#"><i class="icon-pencil"></i> Edit</a></li>
-                            <li><a href="#"><i class="icon-trash"></i> Delete</a></li>
-                            <li><a href="#"><i class="icon-ban-circle"></i> Ban</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#"><i class="i"></i> Make admin</a></li>
-                          </ul>
-                        </div>
-                      </div>  <!-- /controls -->
+                        {!! Form::select('nivel', ['cliente'=>'cliente', 'tecnico'=>'tecnico', 'administrador'=>'administrador'],null, ['class' => 'span6']) !!}
+                      </div> <!-- /controls -->
                     </div> <!-- /control-group -->
                     <div class="control-group">
-                      <label class="control-label" for="radiobtns">Button sizes</label>
+                      {!! Form::label('nivel', 'Nivel de usuario', ['class' => 'control-label']) !!}
                       <div class="controls">
-                        <a class="btn btn-large" href="#"><i class="icon-star"></i> Star</a>
-                        <a class="btn btn-small" href="#"><i class="icon-star"></i> Star</a>
-                        <a class="btn btn-mini" href="#"><i class="icon-star"></i> Star</a>
-                      </div>  <!-- /controls -->
+                        {!! Form::select('status', ['1'=>'activo', '2'=>'inactivo'],null, ['class' => 'span6']) !!}
+                      </div> <!-- /controls -->
                     </div> <!-- /control-group -->
-                    <br />
-                    <div class="form-actions">
-                      <button type="submit" class="btn btn-primary">Save</button>
-                      <button class="btn">Cancel</button>
+
+
+                    <div>
+                      <button type="submit" class="btn btn-primary">Guardar</button>
+                      <button type="reset" class="btn">Cancelar</button>
                     </div> <!-- /form-actions -->
                   </fieldset>
-                </form>
+                {!! Form::close() !!}
 
             </div>
           </div>

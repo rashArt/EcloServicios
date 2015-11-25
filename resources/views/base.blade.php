@@ -45,7 +45,7 @@
             </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <i class="icon-user"></i> EGrappler.com <b class="caret"></b>
+                <i class="icon-user"></i> {{ Auth::user()->email }} <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
                 <li><a href="javascript:;">Profile</a></li>
