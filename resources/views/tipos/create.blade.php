@@ -19,7 +19,7 @@
           <div class="widget ">
             <div class="widget-header">
                 <i class="icon-user"></i>
-                <h3>Registro de Usuarios</h3>
+                <h3>Registro de Tipo de Servicios</h3>
             </div> <!-- /widget-header -->
             <div class="widget-content">
                 @if (count($errors) > 0)

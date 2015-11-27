@@ -17,6 +17,7 @@ class CreateSeviciosTable extends Migration
             $table->integer('tipo_id')->unsigned();
             $table->integer('cliente_id')->unsigned();
             $table->integer('tecnico_id')->unsigned();
+            $table->string('razon');
             $table->integer('status');
             $table->timestamps();
 

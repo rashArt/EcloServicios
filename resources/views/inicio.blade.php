@@ -1,5 +1,6 @@
 @extends('base')
 @section('title', 'Panel Principal')
+@section('ini', 'active')
 
 @section('content')
 
@@ -57,7 +58,7 @@
                     <i class="shortcut-icon icon-list-alt"></i>
                     <span class="shortcut-label">Tipos de Servicios</span>
                 </a>
-                <a href="javascript:;" class="shortcut">
+                <a href="{{ route('servicios.index') }}" class="shortcut">
                     <i class="shortcut-icon icon-credit-card"></i>
                     <span class="shortcut-label">Registro de Servicios</span>
                 </a>

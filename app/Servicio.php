@@ -8,19 +8,19 @@ class Servicio extends Model
 {
     protected $table = 'servicios';
 
-    protected $fillable = ['tipo_id', 'cliente_id', 'tecnico_id', 'status'];
+    protected $fillable = ['tipo_id', 'cliente_id', 'tecnico_id', 'razon', 'status'];
+
+    public function tipo()
+    {
+        return $this->belongsTo('App\TipoServicio');
+    }
 
     public function user()
     {
-        return $this->hasMany('App\User');
+        return $this->belongsTo('App\User');
     }
 
-    public function tipoServicio()
-    {
-        return $this->hasMany('App\TipoServicio');
-    }
-
-    public function servicioImagen()
+    public function servicioimagen()
     {
         return $this->belongsTo('App\ServicioImagen');
     }

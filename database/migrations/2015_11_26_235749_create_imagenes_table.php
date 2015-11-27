@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSevicioImagenTable extends Migration
+class CreateImagenesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,14 +12,13 @@ class CreateSevicioImagenTable extends Migration
      */
     public function up()
     {
-        Schema::create('servicio_imagen', function (Blueprint $table) {
+        Schema::create('imagenes', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nombre');
             $table->integer('servicio_id')->unsigned();
-            $table->integer('imagen_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('servicio_id')->references('id')->on('servicios');
-            $table->foreign('imagen_id')->references('id')->on('imagenes');
         });
     }
 
@@ -30,6 +29,6 @@ class CreateSevicioImagenTable extends Migration
      */
     public function down()
     {
-        Schema::drop('servicio_imagen');
+        Schema::drop('imagenes');
     }
 }

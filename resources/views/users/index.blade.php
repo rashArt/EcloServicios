@@ -1,5 +1,6 @@
 @extends('base')
 @section('title', 'Usuarios')
+@section('usu', 'active')
 
 @section('content')
 

@@ -39,6 +39,6 @@ class User extends Model implements AuthenticatableContract,
 
     public function servicio()
     {
-        return $this->belongsTo('App\Servicio');
+        return $this->hasMany('App\Servicio');
     }
 }

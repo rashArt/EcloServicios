@@ -12,6 +12,6 @@ class TipoServicio extends Model
 
     public function servicio()
     {
-        return $this->belongsTo('App\Servicio');
+        return $this->hasMany('App\Servicio');
     }
 }
