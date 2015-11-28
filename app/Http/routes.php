@@ -62,30 +62,39 @@ Route::group(['middleware' => 'auth'], function () {
         ]
     );
 
-    Route::resource('users', 'UsersController');
-    //nueva ruta funcion borrar del modulo users
-    Route::get('users/{id}/destroy',
-        [
-        'uses' => 'UsersController@destroy',
-        'as' => 'users.destroy'
-        ]
-    );
+    // Rutas para el usuario administrador
+    Route::group(['middleware' => 'admin'], function () {
 
-    Route::resource('servicios/tipos', 'TipoServiciosController');
-    //nueva ruta funcion borrar del modulo tipos
-    Route::get('servicios/tipos/{id}/destroy',
-        [
-        'uses' => 'TipoServiciosController@destroy',
-        'as' => 'servicios/tipos.destroy'
-        ]
-    );
+        // modulo de usuarios
+        Route::resource('users', 'UsersController');
+        // nueva ruta funcion borrar del modulo users
+        Route::get('users/{id}/destroy',
+            [
+            'uses' => 'UsersController@destroy',
+            'as' => 'users.destroy'
+            ]
+        );
 
-    Route::resource('servicios', 'ServiciosController');
-    //nueva ruta funcion borrar del modulo tipos
-    Route::get('servicios/{id}/destroy',
-        [
-        'uses' => 'ServiciosController@destroy',
-        'as' => 'servicios.destroy'
-        ]
-    );
+        // modulo de tipo de servicios
+        Route::resource('servicios/tipos', 'TipoServiciosController');
+        // nueva ruta funcion borrar del modulo tipos
+        Route::get('servicios/tipos/{id}/destroy',
+            [
+            'uses' => 'TipoServiciosController@destroy',
+            'as' => 'servicios/tipos.destroy'
+            ]
+        );
+
+        // modulo de servicios
+        Route::resource('servicios', 'ServiciosController');
+        // nueva ruta funcion borrar del modulo tipos
+        Route::get('servicios/{id}/destroy',
+            [
+            'uses' => 'ServiciosController@destroy',
+            'as' => 'servicios.destroy'
+            ]
+        );
+
+    });
+
 });

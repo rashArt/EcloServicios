@@ -94,7 +94,7 @@ class ServiciosController extends Controller
         $tipo = TipoServicio::lists('nombre', 'id')->all();
         $cliente_id = $servicio->cliente_id;
         $cliente = User::find($cliente_id);
-        $tecnico = User::where('nivel', 'tecnico')->lists('nombre', 'id');
+        $tecnico = User::where('nivel', 'tecnico')->lists('email', 'id');
 
         return view('servicios.edit')
             ->with('servicio', $servicio)
