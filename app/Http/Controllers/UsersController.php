@@ -50,7 +50,7 @@ class UsersController extends Controller
         $user->cedula   = $request->cedula;
         $user->telefono = $request->telefono;
         $user->email    = $request->email;
-        $user->password = $request->password;
+        $user->password = bcrypt($request->password);
         $user->nivel    = $request->nivel;
         $user->status   = $request->status;
 
