@@ -14,14 +14,15 @@ class AdminMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle($request, Closure $next,$nivel)
     {
 
-        if (Auth::user()->nivel != 'administrador') {
+        if (Auth::user()->nivel != $nivel) {
 
             return redirect('inicio');
 
         }
+
         return $next($request);
     }
 }

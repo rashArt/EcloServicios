@@ -50,21 +50,33 @@
             <!-- /widget-header -->
             <div class="widget-content">
               <div class="shortcuts">
-                <a href="{{ route('users.index') }}" class="shortcut">
+                @if (Auth::user()->nivel === 'administrador')
+                  <a href="{{ route('users.index') }}" class="shortcut">
                     <i class="shortcut-icon icon-user"></i>
                     <span class="shortcut-label">Usuarios</span>
-                </a>
-                <a href="{{ route('servicios.tipos.index') }}" class="shortcut">
+                  </a>
+                @endif
+                @if (Auth::user()->nivel === 'administrador')
+                  <a href="{{ route('servicios.tipos.index') }}" class="shortcut">
                     <i class="shortcut-icon icon-list-alt"></i>
                     <span class="shortcut-label">Tipos de Servicios</span>
-                </a>
-                <a href="{{ route('servicios.index') }}" class="shortcut">
-                    <i class="shortcut-icon icon-credit-card"></i>
-                    <span class="shortcut-label">Registro de Servicios</span>
-                </a>
+                  </a>
+                @endif
+                @if (Auth::user()->nivel === 'administrador')
+                  <a href="{{ route('servicios.index') }}" class="shortcut">
+                      <i class="shortcut-icon icon-credit-card"></i>
+                      <span class="shortcut-label">Registro de Servicios</span>
+                  </a>
+                @endif
+                @if (Auth::user()->nivel === 'tecnico')
+                  <a href="{{ route('servicios.index') }}" class="shortcut">
+                      <i class="shortcut-icon icon-credit-card"></i>
+                      <span class="shortcut-label">Registro de Servicios</span>
+                  </a>
+                @endif
                 <a href="javascript:;" class="shortcut">
                     <i class="shortcut-icon icon-copy"></i>
-                    <span class="shortcut-label">Reportes</span>
+                    <span class="shortcut-label">Descargas</span>
                 </a>
                 {{-- <a href="javascript:;" class="shortcut">
                     <i class="shortcut-icon icon-comment"></i>

@@ -3,7 +3,6 @@
 namespace App\Http\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
-
 use Closure;
 
 class TecnicoMiddleware
@@ -15,10 +14,10 @@ class TecnicoMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle($request, Closure $next,$nivel)
     {
 
-        if (Auth::user()->nivel != 'tecnico') {
+        if (Auth::user()->nivel != $nivel) {
 
             return redirect('inicio');
 

@@ -15,8 +15,14 @@ use App\Imagen;
 use App\ServicioImagen;
 use Laracasts\Flash\Flash;
 
+//trato de quitarle permisos al cliente
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+
 class ServiciosController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -24,6 +30,10 @@ class ServiciosController extends Controller
      */
     public function index()
     {
+
+        if (Auth::user()->nivel === 'cliente') {
+            return redirect('inicio');
+        }
         $servicio = Servicio::orderBy('id', 'DESC')->paginate(5);
 
         return view('servicios.index')->with('servicio', $servicio);
@@ -36,6 +46,9 @@ class ServiciosController extends Controller
      */
     public function create()
     {
+        if (Auth::user()->nivel === 'cliente') {
+            return redirect('inicio');
+        }
         $tipo = TipoServicio::lists('nombre', 'id')->all();
         //consulta para concatenar
         $cliente = User::where('nivel', 'cliente')->lists('cedula', 'id');
@@ -89,7 +102,9 @@ class ServiciosController extends Controller
      */
     public function edit($id)
     {
-
+        if (Auth::user()->nivel === 'cliente') {
+            return redirect('inicio');
+        }
         $servicio = Servicio::find($id);
         $tipo = TipoServicio::lists('nombre', 'id')->all();
         $cliente_id = $servicio->cliente_id;
@@ -203,6 +218,6 @@ class ServiciosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
     }
 }

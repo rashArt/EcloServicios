@@ -24,11 +24,15 @@
               <h3>Listado de Servicios</h3>
             </div> <!-- /widget-header -->
             <div class="widget-content">
-              <div class="text-right">
-                <a href="{{ route('servicios.create') }}" class="btn btn-primary"><span class="icon-plus"></span> Agregar Servicio</a>
-                <a href="{{ route('servicios.tipos.create') }}" class="btn btn-primary"><span class="icon-plus"></span> Agregar Tipo de Servicio</a>
-              </div>
-              <hr>
+                <div class="text-right">
+                  @if (Auth::user()->nivel === 'tecnico')
+                    <a href="{{ route('servicios.create') }}" class="btn btn-primary"><span class="icon-plus"></span> Agregar Servicio</a>
+                  @endif
+                  @if (Auth::user()->nivel === 'administrador')
+                    <a href="{{ route('servicios.tipos.create') }}" class="btn btn-primary"><span class="icon-plus"></span> Agregar Tipo de Servicio</a>
+                  @endif
+                </div>
+                <hr>
               <div class="table-responsive">
                 <table class="table table-hover table-condensed">
                   <thead>
