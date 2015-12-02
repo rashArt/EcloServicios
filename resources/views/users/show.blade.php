@@ -34,12 +34,16 @@
                                         <tr>
                                           <td>Nombres</td><td>{{ $user->nombre }} {{ $user->apellido }}</td>
                                         </tr>
+                                        <tr>
                                           <td>Cédula</td><td>{{ $user->cedula }}</td>
                                         </tr>
+                                        <tr>
                                           <td>Correo Electrónico</td><td>{{ $user->email }}</td>
                                         </tr>
+                                        <tr>
                                           <td>Teléfono</td><td>{{ $user->telefono }}</td>
                                         </tr>
+                                        <tr>
                                           <td>Nivel de Usuario</td><td>
                                             @if($user->nivel == 'cliente')
                                               <div class="badge">Cliente</div>

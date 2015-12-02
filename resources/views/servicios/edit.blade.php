@@ -37,7 +37,7 @@
                   <fieldset>
                     <p>
                       Servicio Solicitado por el Usuario:
-                      <a href="{{ URL::to('users/' . $cliente->id . '/edit') }}">
+                      <a href="{{ URL::to('users/' . $cliente->id ) }}">
                         <strong> Cliente-0{{ $servicio->cliente_id }}</strong>
                       </a>
                       <small> {{ $cliente->apellido }} {{$cliente->nombre}}</small>

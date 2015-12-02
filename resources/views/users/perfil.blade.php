@@ -36,19 +36,53 @@
 
                 <div class="tab-content">
                   <div class="tab-pane active" id="ver">
-                    <table class="table table-condensed table-hover">
-                      <thead>
-                        <tr>
-                          <th></th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                      </tbody>
-                    </table>
+                    <div class="table-responsive">
+                      <table class="table table-hover table-condensed">
+                        <tbody>
+                          <tr>
+                            <td>Numero de Usuario</td><td><strong>{{ $usuario->id }}</strong></td>
+                          </tr>
+                          <tr>
+                            <td>Nombres</td><td>{{ $usuario->nombre }} {{ $usuario->apellido }}</td>
+                          </tr>
+                          <tr>
+                            <td>Cédula</td><td>{{ $usuario->cedula }}</td>
+                          </tr>
+                          <tr>
+                            <td>Correo Electrónico</td><td>{{ $usuario->email }}</td>
+                          </tr>
+                          <tr>
+                            <td>Teléfono</td><td>{{ $usuario->telefono }}</td>
+                          </tr>
+                          <tr>
+                            <td>Nivel de Usuario</td><td>
+                              @if($usuario->nivel == 'cliente')
+                                <div class="badge">Cliente</div>
+
+                              @elseif($usuario->nivel == 'tecnico')
+                                <div class="badge badge-info">Tecnico</div>
+                              @else
+                                <div class="badge badge-success">Administrador</div>
+                              @endif
+                            </td>
+                          </tr>
+                          @if (Auth::user()->nivel === 'administrador')
+                          <tr>
+                            <td>Editar</td>
+                            <td>
+                                <a href="{{ URL::to('users/' . $usuario->id . '/edit') }}" class="btn btn-primary"><i class="icon-edit"></i></a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Eliminar</td>
+                            <td>
+                                <a href="{{ route('users.destroy', $usuario->id) }}" class="btn btn-danger"><i class="icon-trash"></i></a>
+                            </td>
+                          </tr>
+                          @endif
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                   <div class="tab-pane" id="editar">
                     @if (count($errors) > 0)

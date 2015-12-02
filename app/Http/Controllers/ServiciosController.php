@@ -30,6 +30,7 @@ class ServiciosController extends Controller
      */
     public function index()
     {
+        //id del usuario logueado
         $id_logueado = Auth::user()->id;
 
         if (Auth::user()->nivel === 'cliente')
@@ -54,13 +55,23 @@ class ServiciosController extends Controller
      */
     public function create()
     {
+        //id del usuario logueado
+        $id_logueado = Auth::user()->id;
+
         if (Auth::user()->nivel === 'cliente') {
             return redirect('inicio');
         }
         $tipo = TipoServicio::lists('nombre', 'id')->all();
         //consulta para concatenar
         $cliente = User::where('nivel', 'cliente')->lists('cedula', 'id');
-        $tecnico = User::where('nivel', 'tecnico')->lists('email', 'id');
+        //si el usuario logueado es tecnico
+        if (Auth::user()->nivel === 'tecnico') {
+            $tecnico = array(Auth::user()->id => Auth::user()->email );
+        }
+        else
+        {
+            $tecnico = User::where('nivel', 'tecnico')->lists('cedula', 'id');
+        }
 
         return view('servicios.create')
             ->with('cliente', $cliente)
