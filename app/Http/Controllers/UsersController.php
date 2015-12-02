@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Requests\UserRequest;
 use App\Http\Controllers\Controller;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 use Laracasts\Flash\Flash;
 
 
@@ -81,6 +82,10 @@ class UsersController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
+        if (is_null ($user))
+        {
+            abort(503);
+        }
 
         return view('users.edit')->with('usuario', $user);
     }
@@ -94,21 +99,49 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::find($id);
+        $id_logueado = Auth::user()->id;
 
-        $user->nombre   = $request->nombre;
-        $user->apellido = $request->apellido;
-        $user->cedula   = $request->cedula;
-        $user->telefono = $request->telefono;
-        $user->email    = $request->email;
-        $user->nivel    = $request->nivel;
-        $user->status   = $request->status;
+        $logueado = User::find($id_logueado);
+        $nivel = $logueado->nivel;
 
-        $user->save();
+        if ($nivel === 'administrador')
+        {
+            $user = User::find($id);
 
-        Flash::success('Se ha actualizado el usuario exitosamente!');
+            $user->nombre   = $request->nombre;
+            $user->apellido = $request->apellido;
+            $user->cedula   = $request->cedula;
+            $user->telefono = $request->telefono;
+            $user->email    = $request->email;
+            $user->nivel    = $request->nivel;
+            $user->status   = $request->status;
 
-        return redirect()->route('users.index');
+            $user->save();
+
+            // admin cambia perfil de usuario
+            Flash::success('Se ha actualizado el usuario exitosamente!');
+            return redirect()->route('users.index');
+        }
+        else
+        {
+
+            $user = User::find($id_logueado);
+
+            $user->nombre   = $request->nombre;
+            $user->apellido = $request->apellido;
+            $user->cedula   = $request->cedula;
+            $user->telefono = $request->telefono;
+            $user->email    = $request->email;
+            $user->nivel    = $request->nivel;
+            $user->status   = $request->status;
+
+            $user->save();
+
+            //cliente cambia perfil de usuario
+            Flash::success('Se ha actualizado el perfil exitosamente!');
+
+            return redirect()->route('inicio');
+        }
     }
 
     /**
@@ -124,5 +157,18 @@ class UsersController extends Controller
         Flash::warning('Se ha eliminado el usuario exitosamente!');
 
         return redirect()->route('users.index');
+    }
+
+    public function perfil()
+    {
+        $id = Auth::user()->id;
+        $user = User::find($id);
+
+        return view('users.perfil')->with('usuario', $user);
+    }
+
+    public function updPerfil(Request $request, $id)
+    {
+        
     }
 }

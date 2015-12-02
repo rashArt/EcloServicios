@@ -48,8 +48,8 @@
                 <i class="icon-user"></i> {{ Auth::user()->email }} <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
-                <li><a href="javascript:;">Profile</a></li>
-                <li><a href="{{route('logout')}}">Logout</a></li>
+                <li><a href="{{route('users.perfil')}}">Perfil</a></li>
+                <li><a href="{{route('logout')}}">Salir</a></li>
               </ul>
             </li>
           @else

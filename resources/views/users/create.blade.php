@@ -78,7 +78,7 @@
                       </div> <!-- /controls -->
                     </div> <!-- /control-group -->
                     <div class="control-group">
-                      {!! Form::label('nivel', 'Nivel de usuario', ['class' => 'control-label']) !!}
+                      {!! Form::label('nivel', 'Estado de usuario', ['class' => 'control-label']) !!}
                       <div class="controls">
                         {!! Form::select('status', ['1'=>'activo', '2'=>'inactivo'],null, ['class' => 'span6']) !!}
                       </div> <!-- /controls -->

@@ -9,6 +9,7 @@
     <div class="container">
       <div class="row">
         <div class="span6">
+        @include ('flash::message')
           <div class="widget widget-nopad">
             <div class="widget-header">
               <i class="icon-bar-chart"></i>

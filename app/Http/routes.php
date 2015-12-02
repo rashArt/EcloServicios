@@ -46,6 +46,13 @@ Route::get('/logout',
     ]
 );
 
+Route::get('/perfil',
+    [
+        'uses' => 'UsersController@perfil',
+        'as' => 'users.perfil'
+    ]
+);
+
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/',
