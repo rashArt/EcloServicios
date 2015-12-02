@@ -14,6 +14,7 @@ use Laracasts\Flash\Flash;
 
 class UsersController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -70,7 +71,17 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        //
+        if (Auth::user()->nivel === 'cliente') {
+            return redirect('inicio');
+        }
+
+        $user = User::find($id);
+        if (is_null ($user))
+        {
+            abort(503);
+        }
+
+        return view('users.show')->with('user', $user);
     }
 
     /**
@@ -122,18 +133,18 @@ class UsersController extends Controller
             Flash::success('Se ha actualizado el usuario exitosamente!');
             return redirect()->route('users.index');
         }
-        else
+        elseif ($nivel === 'cliente')
         {
 
             $user = User::find($id_logueado);
 
             $user->nombre   = $request->nombre;
             $user->apellido = $request->apellido;
-            $user->cedula   = $request->cedula;
+            $user->cedula   = $user->cedula;
             $user->telefono = $request->telefono;
             $user->email    = $request->email;
-            $user->nivel    = $request->nivel;
-            $user->status   = $request->status;
+            $user->nivel    = $user->nivel;
+            $user->status   = $user->status;
 
             $user->save();
 

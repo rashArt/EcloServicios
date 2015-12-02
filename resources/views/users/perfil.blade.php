@@ -4,7 +4,7 @@
 
 <div class="main">
   <div class="main-inner">
-    <div class="container">
+    <div class="container alto">
       <div class="row">
         <div class="span12">
 
@@ -18,7 +18,7 @@
 
           @include('flash::message')
 
-          <div class="widget ">
+          <div class="widget">
             <div class="widget-header">
                 <i class="icon-user"></i>
                 <h3>Perfil del Usuario</h3>
@@ -117,7 +117,7 @@
                     {!! Form::close() !!}
                   </div>
                 </div>
-
+              </div>
             </div>
           </div>
         </div> <!-- /span12 -->

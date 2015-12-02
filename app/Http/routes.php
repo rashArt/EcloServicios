@@ -46,13 +46,6 @@ Route::get('/logout',
     ]
 );
 
-Route::get('/perfil',
-    [
-        'uses' => 'UsersController@perfil',
-        'as' => 'users.perfil'
-    ]
-);
-
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/',
@@ -66,6 +59,27 @@ Route::group(['middleware' => 'auth'], function () {
         [
             'uses' => 'FrontendController@inicio',
             'as' => 'inicio'
+        ]
+    );
+
+    Route::get('/perfil',
+        [
+            'uses' => 'UsersController@perfil',
+            'as' => 'users.perfil'
+        ]
+    );
+
+    Route::put('users/{id}',
+        [
+        'uses' => 'UsersController@update',
+        'as' => 'users.update'
+        ]
+    );
+
+    Route::get('users/{id}',
+        [
+        'uses' => 'UsersController@show',
+        'as' => 'users.show'
         ]
     );
 

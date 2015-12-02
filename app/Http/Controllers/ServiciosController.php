@@ -30,11 +30,19 @@ class ServiciosController extends Controller
      */
     public function index()
     {
+        $id_logueado = Auth::user()->id;
 
-        if (Auth::user()->nivel === 'cliente') {
+        if (Auth::user()->nivel === 'cliente')
+        {
             return redirect('inicio');
         }
-        $servicio = Servicio::orderBy('id', 'DESC')->paginate(5);
+        elseif (Auth::user()->nivel === 'tecnico')
+        {
+            $servicio = Servicio::where('tecnico_id',$id_logueado)->orderBy('id', 'DESC')->paginate(5);
+        }
+        else {
+            $servicio = Servicio::orderBy('id', 'DESC')->paginate(5);
+        }
 
         return view('servicios.index')->with('servicio', $servicio);
     }

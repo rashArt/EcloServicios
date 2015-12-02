@@ -358,14 +358,10 @@ textarea {
 */
 
 .widget {
-	
 	position: relative;
 	clear: both;
-	
 	width: auto;
-	
 	margin-bottom: 2em;
-		
 	overflow: hidden;
 }
 	
@@ -429,12 +425,8 @@ textarea {
 
 .widget-content {
 	padding: 20px 15px 15px;
-	
 	background: #FFF;
-	
-	
 	border: 1px solid #D5D5D5;
-	
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
@@ -1307,3 +1299,8 @@ color: #333;
 	
 }
 
+
+.alto {
+
+	min-height: 450px;
+}

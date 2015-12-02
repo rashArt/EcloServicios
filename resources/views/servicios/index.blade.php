@@ -47,30 +47,31 @@
                   </thead>
                   <tbody>
                     @foreach($servicio as $serv)
-                    <tr>
-                      <td>{{ $serv->tipo->nombre }}</td>
-                      <td>
-                        <a href="{{ URL::to('users/' . $serv->cliente_id  . '/edit') }}" class="text-primary">Cliente-0{{ $serv->cliente_id }}</a>
-                      </td>
-                      <td>
-                        <a href="{{ URL::to('users/' . $serv->tecnico_id  . '/edit') }}" class="text-primary">Tecnico-0{{ $serv->tecnico_id }}</a>
-                      </td>
-                      <td>
-                        @if($serv->status == 1)
-                        <div class="badge badge-warning"> Solicitado</div>
-                        @elseif($serv->status == 2)
-                        <div class="badge badge-info"> Procesando</div>
-                        @else
-                        <div class="badge badge-success"> Finalizado</div>
-                        @endif
-                      </td>
-                      <td>
-                        <a href="{{ URL::to('servicios/' . $serv->id . '/edit') }}" class="btn btn-primary"><i class="icon-edit"></i></a>
-                      </td>
-                      <td>
-                        <a href="{{ URL::to('servicios/' . $serv->id . '/destroy') }}" class="btn btn-danger"><i class="icon-trash"></i></a>
-                      </td>
-                    </tr>
+
+                        <tr>
+                          <td>{{ $serv->tipo->nombre }}</td>
+                          <td>
+                            <a href="{{ URL::to('users/' . $serv->cliente_id) }}" class="text-primary">Cliente-0{{ $serv->cliente_id }}</a>
+                          </td>
+                          <td>
+                            <a href="{{ URL::to('users/' . $serv->tecnico_id) }}" class="text-primary">Tecnico-0{{ $serv->tecnico_id }}</a>
+                          </td>
+                          <td>
+                            @if($serv->status == 1)
+                            <div class="badge badge-warning"> Solicitado</div>
+                            @elseif($serv->status == 2)
+                            <div class="badge badge-info"> Procesando</div>
+                            @else
+                            <div class="badge badge-success"> Finalizado</div>
+                            @endif
+                          </td>
+                          <td>
+                            <a href="{{ URL::to('servicios/' . $serv->id . '/edit') }}" class="btn btn-primary"><i class="icon-edit"></i></a>
+                          </td>
+                          <td>
+                            <a href="{{ URL::to('servicios/' . $serv->id . '/destroy') }}" class="btn btn-danger"><i class="icon-trash"></i></a>
+                          </td>
+                        </tr>
                     @endforeach
                   </tbody>
                 </table>

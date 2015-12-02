@@ -6,10 +6,10 @@
 
 <div class="main">
   <div class="main-inner">
-    <div class="container">
+    <div class="container alto">
       <div class="row">
-        <div class="span6">
         @include ('flash::message')
+        <div class="span6">
           <div class="widget widget-nopad">
             <div class="widget-header">
               <i class="icon-bar-chart"></i>

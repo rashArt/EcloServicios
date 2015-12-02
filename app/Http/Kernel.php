@@ -32,5 +32,6 @@ class Kernel extends HttpKernel
         //middleware para roles
         'admin' =>\App\Http\Middleware\AdminMiddleware::class,
         'tecnico' =>\App\Http\Middleware\TecnicoMiddleware::class,
+        'cliente' =>\App\Http\Middleware\ClienteMiddleware::class,
     ];
 }
