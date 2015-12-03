@@ -14,9 +14,6 @@ use App\User;
 use App\Imagen;
 use App\ServicioImagen;
 use Laracasts\Flash\Flash;
-
-//trato de quitarle permisos al cliente
-
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 

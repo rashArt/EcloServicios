@@ -119,5 +119,23 @@ Route::group(['middleware' => 'auth'], function () {
         ]
     );
 
+    Route::group(['middleware' => 'cliente:cliente'], function ()
+    {
+        // rutas para el cliente solamente
+        Route::get('servicio/nuevo',
+            [
+            'uses' => 'FrontendController@crearServicio',
+            'as' => 'cliente.crear_servicio'
+            ]
+        );
+
+        Route::post('servicio/guardar',
+            [
+            'uses' => 'FrontendController@guardarServicio',
+            'as' => 'servicio.guardar'
+            ]
+        );
+    });
+
 
 });

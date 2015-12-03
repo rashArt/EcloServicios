@@ -75,6 +75,9 @@
     <div class="container">
       <ul class="mainnav">
         <li class="@yield('ini')" ><a href="{{ route('inicio')}}"><i class="icon-dashboard"></i><span>Panel Principal</span> </a> </li>
+        @if (Auth::user()->nivel === 'cliente')
+          <li class="@yield('serv')" ><a href="{{ url('servicio/nuevo') }}"><i class="icon-credit-card"></i><span>Servicios</span> </a></li>
+        @endif
         @if (Auth::user()->nivel === 'administrador')
           <li class="@yield('usu')" ><a href="{{ route('users.index') }}"><i class="icon-user"></i><span>Usuarios</span> </a> </li>
         @endif
