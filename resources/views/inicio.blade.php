@@ -13,28 +13,62 @@
           <div class="widget widget-nopad">
             <div class="widget-header">
               <i class="icon-bar-chart"></i>
-              <h3>Estadisticas del día</h3>
+              <h3>Estadisticas</h3>
             </div>
             <!-- /widget-header -->
             <div class="widget-content">
               <div class="widget big-stats-container">
+
                 <div class="widget-content">
-                  <h6 class="bigstats">Contador de registros totales realizados dentro del sistema de servicios de <a href="eclosoft.net" target="_BLANK">Eclosoft C.A.</a></h6>
-                  <div id="big_stats" class="cf">
+                  @if (Auth::user()->nivel === 'administrador')
+                    <h6 class="bigstats">Contador de registros totales realizados dentro del sistema de servicios de <a href="eclosoft.net" target="_BLANK">Eclosoft C.A.</a></h6>
+                    <div id="big_stats" class="cf">
 
-                    <div class="stat"> <i class="icon-wrench"></i> <span class="value">2</span> </div>
-                    <!-- .stat -->
+                      <div class="stat"> <i class="icon-wrench"></i> <span class="value">2</span> </div>
+                      <!-- .stat -->
 
-                    <div class="stat"> <i class="icon-user"></i> <span class="value">3</span> </div>
-                    <!-- .stat -->
+                      <div class="stat"> <i class="icon-user"></i> <span class="value">3</span> </div>
+                      <!-- .stat -->
 
-                    <div class="stat"> <i class="icon-credit-card"></i> <span class="value">23</span> </div>
-                    <!-- .stat -->
+                      <div class="stat"> <i class="icon-credit-card"></i> <span class="value">23</span> </div>
+                      <!-- .stat -->
 
-                    <div class="stat"> <i class="icon-refresh"></i> <span class="value">25</span> </div>
-                    <!-- .stat -->
-
-                  </div>
+                      <div class="stat"> <i class="icon-refresh"></i> <span class="value">25</span> </div>
+                      <!-- .stat -->
+                    </div>
+                  @elseif (Auth::user()->nivel === 'cliente')
+                    <h6 class="bigstats">servicios Realizados hasta la fecha: <span class="badge">Badge</span></h6>
+                    <table class="bigstats table table-condensed table-hover">
+                      <thead>
+                        <tr>
+                          <th>Observa tus servicios</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Formateo</td>
+                          <td>Estado</td>
+                          <td>Fecha</td>
+                          <td>Actualización</td>
+                          <td><a href="#"><i class="icon-arrow-right"></i></a></td>
+                        </tr>
+                        <tr>
+                          <td>Formateo</td>
+                          <td>Estado</td>
+                          <td>Fecha</td>
+                          <td>Actualización</td>
+                          <td><a href="#"><i class="icon-arrow-right"></i></a></td>
+                        </tr>
+                        <tr>
+                          <td>Formateo</td>
+                          <td>Estado</td>
+                          <td>Fecha</td>
+                          <td>Actualización</td>
+                          <td><a href="#"><i class="icon-arrow-right"></i></a></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  @endif
                 </div>
                 <!-- /widget-content -->
               </div>
