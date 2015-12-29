@@ -68,7 +68,7 @@
                       </div> <!-- /controls -->
                       <div class="controls">
                         {!! Form::radio('status', '2') !!}
-                        <p class="text-primary"><strong>Procesado</strong></p>
+                        <p class="text-primary"><strong>Procesando</strong></p>
                       </div> <!-- /controls -->
                       <div class="controls">
                         {!! Form::radio('status', '3') !!}

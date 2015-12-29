@@ -12,17 +12,25 @@ use App\User;
 use App\Servicio;
 use App\TipoServicio;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class FrontendController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        Carbon::setLocale('es');
+    }
     public function inicio()
     {
-        return view('inicio');
+        //id del usuario logueado
+        $id_logueado = Auth::user()->id;
+
+        $servicio = Servicio::where('cliente_id',$id_logueado)->get();
+        $cantidad = count($servicio);
+
+        return view('inicio')
+            ->with('cantidad', $cantidad)
+            ->with('servicio', $servicio);
     }
 
     public function getRegistro()

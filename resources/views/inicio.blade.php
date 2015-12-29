@@ -37,35 +37,38 @@
                       <!-- .stat -->
                     </div>
                   @elseif (Auth::user()->nivel === 'cliente')
-                    <h6 class="bigstats">servicios Realizados hasta la fecha: <span class="badge">Badge</span></h6>
+                    <h6 class="bigstats">servicios Realizados hasta la fecha: <span class="badge">{{ $cantidad }}</span></h6>
                     <table class="bigstats table table-condensed table-hover">
                       <thead>
                         <tr>
-                          <th>Observa tus servicios</th>
+                          <th colspan="5">Observa tus servicios</th>
+                        </tr>
+                        <tr>
+                          <th>Servicio</th>
+                          <th>Estado</th>
+                          <th>Registro</th>
+                          <th>Actualización</th>
+                          <th></th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>Formateo</td>
-                          <td>Estado</td>
-                          <td>Fecha</td>
-                          <td>Actualización</td>
-                          <td><a href="#"><i class="icon-arrow-right"></i></a></td>
+                        @foreach ($servicio as $servicio)
+                          <tr>
+                          <td>{{ $servicio->tipo->nombre }}</td>
+                          <td>
+                            @if ($servicio->status == 1)
+                              <span class="text-warning">Solicitado</span>
+                            @elseif ($servicio->status == 2)
+                              <span class="text-primary">Procesando</span>
+                            @else
+                              <span class="text-success">Finalizado</span>
+                            @endif
+                          </td>
+                          <td>{{ $servicio->created_at->format('d/m/Y h:i:s A') }}</td>
+                          <td>{{ $servicio->updated_at->diffForHumans() }}</td>
+                          <td><a href="{{ URL::to('servicios/' . $servicio->id) }}"><i class="icon-arrow-right"></i></a></td>
                         </tr>
-                        <tr>
-                          <td>Formateo</td>
-                          <td>Estado</td>
-                          <td>Fecha</td>
-                          <td>Actualización</td>
-                          <td><a href="#"><i class="icon-arrow-right"></i></a></td>
-                        </tr>
-                        <tr>
-                          <td>Formateo</td>
-                          <td>Estado</td>
-                          <td>Fecha</td>
-                          <td>Actualización</td>
-                          <td><a href="#"><i class="icon-arrow-right"></i></a></td>
-                        </tr>
+                        @endforeach
                       </tbody>
                     </table>
                   @endif

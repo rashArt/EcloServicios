@@ -16,10 +16,15 @@ use App\ServicioImagen;
 use Laracasts\Flash\Flash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Carbon\Carbon;
 
 class ServiciosController extends Controller
 {
+    public function __construct() {
 
+        Carbon::setLocale('es');
+
+    }
     /**
      * Display a listing of the resource.
      *
@@ -107,7 +112,22 @@ class ServiciosController extends Controller
      */
     public function show($id)
     {
-        //
+
+        $servicio = Servicio::find($id);
+
+        if (Auth::user()->nivel === 'cliente') {
+            $cliente = Auth::user()->id;
+            if ($servicio->cliente_id != $cliente ) {
+                return redirect('inicio');
+            }
+        }
+
+        $tecnico_id = $servicio->tecnico_id;
+        $tecnico = User::find($tecnico_id);
+
+        return view('servicios.show')
+            ->with('tecnico', $tecnico)
+            ->with('servicio', $servicio);
     }
 
     /**
