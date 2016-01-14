@@ -106,7 +106,45 @@ Route::group(['middleware' => 'auth'], function () {
             ]
         );
 
+        Route::get('descargas',
+            [
+            'uses' => 'DescargasController@index',
+            'as' => 'descargas.index'
+            ]
+        );
+        Route::get('descargas/clientes',
+            [
+            'uses' => 'DescargasController@clientes',
+            'as' => 'descargas.clientes'
+            ]
+        );
+        Route::get('descargas/tecnicos',
+            [
+            'uses' => 'DescargasController@tecnicos',
+            'as' => 'descargas.tecnicos'
+            ]
+        );
+        Route::get('descargas/administradores',
+            [
+            'uses' => 'DescargasController@administradores',
+            'as' => 'descargas.administradores'
+            ]
+        );
+        Route::get('descargas/servicios',
+            [
+            'uses' => 'DescargasController@serviciosTipo',
+            'as' => 'descargas.serviciosTipo'
+            ]
+        );
+
     });
+
+    Route::get('descargas/servicio/{id}',
+        [
+        'uses' => 'DescargasController@servicio',
+        'as' => 'descargas.servicio'
+        ]
+    );
 
 
     // modulo de servicios, middleware agregado en el controller

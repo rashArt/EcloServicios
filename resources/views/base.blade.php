@@ -12,7 +12,7 @@
 <link href="{{ asset('lib/css/font-awesome.css') }}" rel="stylesheet">
 <link href="{{ asset('lib/css/style.css') }}" rel="stylesheet">
 <link href="{{ asset('lib/css/pages/dashboard.css') }}" rel="stylesheet">
-
+<link href="{{ asset('lib/css/pages/plans.css') }}" rel="stylesheet">
 
 <link href="{{ asset('lib/css/pages/signin.css') }}" rel="stylesheet" type="text/css">
 
@@ -34,7 +34,7 @@
       <div class="nav-collapse">
         <ul class="nav pull-right">
           @if (Auth::check())
-            <li class="dropdown">
+            {{-- <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <i class="icon-cog"></i> Account <b class="caret"></b>
               </a>
@@ -42,7 +42,7 @@
                 <li><a href="javascript:;">Settings</a></li>
                 <li><a href="javascript:;">Help</a></li>
               </ul>
-            </li>
+            </li> --}}
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <i class="icon-user"></i> {{ Auth::user()->email }} <b class="caret"></b>
@@ -83,22 +83,11 @@
         @endif
         @if (Auth::user()->nivel === 'administrador')
           <li class="@yield('serv')" ><a href="{{ route('servicios.index') }}"><i class="icon-credit-card"></i><span>Servicios</span> </a></li>
+          <li class="@yield('des')" ><a href="{{ route('descargas.index') }}"><i class="icon-list-alt"></i><span>Descargas</span> </a></li>
         @endif
         @if (Auth::user()->nivel === 'tecnico')
           <li class="@yield('serv')" ><a href="{{ route('servicios.index') }}"><i class="icon-credit-card"></i><span>Servicios</span> </a></li>
         @endif
-        <li class="@yield('rep')" ><a href="reports.html"><i class="icon-list-alt"></i><span>Reportes</span> </a> </li>
-        <li><a href="charts.html"><i class="icon-bar-chart"></i><span>Charts</span> </a> </li>
-        <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-long-arrow-down"></i><span>Drops</span> <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="icons.html">Icons</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-            <li><a href="pricing.html">Pricing Plans</a></li>
-            <li><a href="login.html">Login</a></li>
-            <li><a href="signup.html">Signup</a></li>
-            <li><a href="error.html">404</a></li>
-          </ul>
-        </li>
       </ul>
     </div>
     <!-- /container -->

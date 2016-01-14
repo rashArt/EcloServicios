@@ -112,7 +112,7 @@
                       <span class="shortcut-label">Registro de Servicios</span>
                   </a>
                 @endif
-                <a href="javascript:;" class="shortcut">
+                <a href="{{ route('descargas.index') }}" class="shortcut">
                     <i class="shortcut-icon icon-copy"></i>
                     <span class="shortcut-label">Descargas</span>
                 </a>

@@ -150,6 +150,7 @@ return [
          */
         Collective\Html\HtmlServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
+        Anouar\Fpdf\FpdfServiceProvider::class,
 
     ],
 
@@ -206,6 +207,7 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Flash' => Laracasts\Flash\Flash::class,
+        'Fpdf' => Anouar\Fpdf\Facades\Fpdf::class,
     ],
 
 ];

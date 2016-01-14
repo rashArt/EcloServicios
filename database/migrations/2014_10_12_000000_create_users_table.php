@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->string('nombre');
             $table->string('apellido');
             $table->integer('cedula')->unique();
-            $table->integer('telefono');
+            $table->string('telefono');
             $table->string('email')->unique();
             $table->string('password');
             $table->enum('nivel', ['cliente','tecnico','administrador'])->default('cliente');

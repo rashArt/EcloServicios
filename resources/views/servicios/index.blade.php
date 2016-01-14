@@ -43,6 +43,7 @@
                       <th>Estado</th>
                       <th><i class="icon-edit"></i></th>
                       <th><i class="icon-trash"></i></th>
+                      <th><i class="icon-download-alt"></i></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -70,6 +71,9 @@
                           </td>
                           <td>
                             <a href="{{ URL::to('servicios/' . $serv->id . '/destroy') }}" class="btn btn-danger"><i class="icon-trash"></i></a>
+                          </td>
+                          <td>
+                            <a href="{{ URL::to('/descargas/servicio/' . $serv->id) }}" target="_BLANK" class="btn btn-red"><i class="icon-download-alt"></i></a>
                           </td>
                         </tr>
                     @endforeach
