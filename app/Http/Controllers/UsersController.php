@@ -72,7 +72,7 @@ class UsersController extends Controller
     public function show($id)
     {
         if (Auth::user()->nivel === 'cliente') {
-            return redirect('inicio');
+            return redirect('inicioCliente');
         }
 
         $user = User::find($id);
@@ -151,7 +151,7 @@ class UsersController extends Controller
             //cliente cambia perfil de usuario
             Flash::success('Se ha actualizado el perfil exitosamente!');
 
-            return redirect()->route('inicio');
+            return redirect()->route('inicioCliente');
         }
     }
 

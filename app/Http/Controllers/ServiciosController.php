@@ -37,7 +37,7 @@ class ServiciosController extends Controller
 
         if (Auth::user()->nivel === 'cliente')
         {
-            return redirect('inicio');
+            return redirect('inicioCliente');
         }
         elseif (Auth::user()->nivel === 'tecnico')
         {
@@ -61,7 +61,7 @@ class ServiciosController extends Controller
         $id_logueado = Auth::user()->id;
 
         if (Auth::user()->nivel === 'cliente') {
-            return redirect('inicio');
+            return redirect('inicioCliente');
         }
         $tipo = TipoServicio::lists('nombre', 'id')->all();
         //consulta para concatenar
@@ -118,7 +118,7 @@ class ServiciosController extends Controller
         if (Auth::user()->nivel === 'cliente') {
             $cliente = Auth::user()->id;
             if ($servicio->cliente_id != $cliente ) {
-                return redirect('inicio');
+                return redirect('inicioCliente');
             }
         }
 
@@ -139,7 +139,7 @@ class ServiciosController extends Controller
     public function edit($id)
     {
         if (Auth::user()->nivel === 'cliente') {
-            return redirect('inicio');
+            return redirect('inicioCliente');
         }
         $servicio = Servicio::find($id);
         $tipo = TipoServicio::lists('nombre', 'id')->all();

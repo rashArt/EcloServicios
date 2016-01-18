@@ -23,7 +23,7 @@
                 <h3>Visualización de Servicios</h3>
             </div> <!-- /widget-header -->
             <div class="widget-content">
-              <div class="text-center"><a href="{{ URL::to('/descargas/servicio/' . $servicio->id) }}" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Imprimir" target="_BLANK"><i class="icon-download-alt"></i> Informe</a></div>
+              <div class="text-center"><a href="{{ URL::to('/descargas/servicio/' . $servicio->id) }}" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Imprimir" target="_BLANK"><i class="icon-download-alt"></i> Informe</a> <a href="{{URL::to('servicios/' . $servicio->id . '/edit')}}" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Imprimir"><i class="icon-download-alt"></i> Actualizar</a></div>
               <br>
               <table class="table table-condensed table-hover">
                 <thead>

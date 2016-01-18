@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Requests\RegistroRequest;
+use App\Http\Requests\ServicioClienteRequest;
 use App\Http\Controllers\Controller;
 use Laracasts\Flash\Flash;
 use App\User;
@@ -25,12 +26,29 @@ class FrontendController extends Controller
         //id del usuario logueado
         $id_logueado = Auth::user()->id;
 
-        $servicio = Servicio::where('cliente_id',$id_logueado)->get();
-        $cantidad = count($servicio);
+        if (Auth::user()->nivel === 'cliente')
+        {
+            $servicio = Servicio::where('cliente_id',$id_logueado)->get();
+            $cantidad = count($servicio);
 
-        return view('inicio')
-            ->with('cantidad', $cantidad)
-            ->with('servicio', $servicio);
+            return view('inicioCliente')
+                ->with('servicio', $servicio)
+                ->with('cantidad', $cantidad);
+        }
+        else if (Auth::user()->nivel === 'tecnico')
+        {
+            $servicio = Servicio::where('tecnico_id',$id_logueado)->get();
+            $cantidad = count($servicio);
+
+            return view('inicioTecnico')
+                ->with('servicio', $servicio)
+                ->with('cantidad', $cantidad);
+        }
+        else if (Auth::user()->nivel === 'administrador')
+        {
+            return view('inicioAdmin');
+        }
+
     }
 
     public function getRegistro()
@@ -63,13 +81,14 @@ class FrontendController extends Controller
         $tipo    = TipoServicio::lists('nombre', 'id')->all();
         $cliente = array(Auth::user()->id => Auth::user()->nombre );;
         $tecnico = User::where('nivel', 'tecnico')->lists('nombre','id');
+
         return view('cliente.crear_servicio')
             ->with('cliente', $cliente)
             ->with('tecnico', $tecnico)
             ->with('tipo', $tipo);
     }
 
-    public function guardarServicio(Request $request)
+    public function guardarServicio(ServicioClienteRequest $request)
     {
         //coloco en un array los tecnicos
 
