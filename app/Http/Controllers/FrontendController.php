@@ -28,7 +28,7 @@ class FrontendController extends Controller
 
         if (Auth::user()->nivel === 'cliente')
         {
-            $servicio = Servicio::where('cliente_id',$id_logueado)->get();
+            $servicio = Servicio::where('cliente_id',$id_logueado)->orderBy('updated_at', 'DESC')->take(5)->get();
             $cantidad = count($servicio);
 
             return view('inicioCliente')
@@ -46,7 +46,17 @@ class FrontendController extends Controller
         }
         else if (Auth::user()->nivel === 'administrador')
         {
-            return view('inicioAdmin');
+            $tecnicos = User::where('nivel', 'tecnico')->count();
+            $clientes = User::where('nivel', 'cliente')->count();
+            $registrados = Servicio::count();
+            $concluidos = Servicio::where('status', 3)->count();
+
+
+            return view('inicioAdmin')
+                ->with('tecnicos', $tecnicos)
+                ->with('clientes', $clientes)
+                ->with('registrados', $registrados)
+                ->with('concluidos', $concluidos);
         }
 
     }

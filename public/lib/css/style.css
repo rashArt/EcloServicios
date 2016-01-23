@@ -10,18 +10,23 @@ Bootstrap Admin Template by EGrappler.com
 
 body {
 	background: #f9f6f1;
-	font: 13px/1.7em 'Open Sans';
+	font: 13px/1.7em 'fOpen Sans';
 }
     
 p { 
-	font: 13px/1.7em 'Open Sans'; 	
+	font: 13px/1.7em 'Open Sansf'; 	
 }
     
 input,
 button,
 select,
 textarea {
-  font-family: 'Open Sans';
+  font-family: 'Open Sansf';
+}
+
+.img-logo {
+	width: 50px;
+	margin: -15px 0 -15px;
 }
 
 .dropdown .dropdown-menu {
@@ -95,7 +100,7 @@ textarea {
 .navbar-inner {
 	padding: 7px 0;
 	
-	background: #00ba8b !important;
+	background: #019CDF !important;/*#00BA8B*/
 	
 	-moz-border-radius: 0;
 	-webkit-border-radius: 0;
@@ -207,7 +212,7 @@ textarea {
 
 .subnavbar .container > ul > li.active > a {
 	
-	border-bottom:3px solid #ff7f74;
+	border-bottom:3px solid #4284BC; /* #FF7F74 */
 	color: #383838;
 }
     
@@ -1116,7 +1121,7 @@ width: 11px;}
 	height: 250px;
 }
 
-.dropdown-menu li>a:hover, .dropdown-menu .active>a, .dropdown-menu .active>a:hover { background:#00ba8b;}
+.dropdown-menu li>a:hover, .dropdown-menu .active>a, .dropdown-menu .active>a:hover { background: #019CDF ;}/*#00BA8B*/
 
 .accordion-heading { background:#e5e5e5;  }
 .accordion-heading a { color:#545454; text-decoration:none; font-weight:bold; }

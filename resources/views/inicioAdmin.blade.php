@@ -23,16 +23,20 @@
                     <h6 class="bigstats">Contador de registros totales realizados dentro del sistema de servicios de <a href="eclosoft.net" target="_BLANK">Eclosoft C.A.</a></h6>
                     <div id="big_stats" class="cf">
 
-                      <div class="stat"> <i class="icon-wrench"></i> <span class="value">2</span> </div>
+                      <div class="stat"> <i class="icon-wrench"></i> <span class="value">{{ $tecnicos }}</span>
+                      <p>Técnicos</p></div>
                       <!-- .stat -->
 
-                      <div class="stat"> <i class="icon-user"></i> <span class="value">3</span> </div>
+                      <div class="stat"> <i class="icon-user"></i> <span class="value">{{ $clientes }}</span>
+                      <p>Clientes</p></div>
                       <!-- .stat -->
 
-                      <div class="stat"> <i class="icon-credit-card"></i> <span class="value">23</span> </div>
+                      <div class="stat"> <i class="icon-credit-card"></i> <span class="value">{{ $registrados }}</span>
+                      <p>Servicios Registrados</p> </div>
                       <!-- .stat -->
 
-                      <div class="stat"> <i class="icon-refresh"></i> <span class="value">25</span> </div>
+                      <div class="stat"> <i class="icon-check"></i> <span class="value">{{ $concluidos }}</span>
+                      <p>Servicios Concluidos</p></div>
                       <!-- .stat -->
                     </div>
                 </div>

@@ -39,7 +39,7 @@
             </div> <!-- /login-fields -->
 
             <div class="login-actions">
-                <button class="button btn btn-success btn-large">Acceder</button>
+                <button class="button btn btn-primary btn-large">Acceder</button>
             </div> <!-- .actions -->
 
         {!! Form::close() !!}

@@ -39,7 +39,9 @@
                     <tr>
                       <th>Tipo de Servicio</th>
                       <th>Codigo del Cliente</th>
-                      <th>Codigo del Tecnico</th>
+                      @if (Auth::user()->nivel === 'administrador')
+                        <th>Codigo del Tecnico</th>
+                      @endif
                       <th>Estado</th>
                       <th><i class="icon-edit"></i></th>
                       <th><i class="icon-trash"></i></th>
@@ -54,9 +56,11 @@
                           <td>
                             <a href="{{ URL::to('users/' . $serv->cliente_id) }}" class="text-primary">Cliente-0{{ $serv->cliente_id }}</a>
                           </td>
+                          @if (Auth::user()->nivel === 'administrador')
                           <td>
                             <a href="{{ URL::to('users/' . $serv->tecnico_id) }}" class="text-primary">Tecnico-0{{ $serv->tecnico_id }}</a>
                           </td>
+                          @endif
                           <td>
                             @if($serv->status == 1)
                             <div class="badge badge-warning"> Solicitado</div>

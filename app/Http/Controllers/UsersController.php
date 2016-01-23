@@ -80,6 +80,10 @@ class UsersController extends Controller
         {
             abort(503);
         }
+        if ($id == 1)
+        {
+            abort(503);
+        }
 
         return view('users.show')->with('user', $user);
     }

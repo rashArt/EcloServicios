@@ -16,12 +16,6 @@
             </div>
             <!-- /widget-header -->
             <div class="widget-content">
-              <div class="span12">
-                <br>
-                <p>
-                  cantidad total de servicios: <button class=="btn btn-default">{{ $cantidad }}</button>
-                </p>
-              </div>
               <table class="table table-striped table-bordered">
                 <thead>
                   <tr>
@@ -52,16 +46,12 @@
                   @endforeach
                 </tbody>
               </table>
-              <div class=" text-center">
-                <ul class="pagination">
-                  <li><a href="#">&laquo;</a></li>
-                  <li><a href="#">1</a></li>
-                  <li><a href="#">2</a></li>
-                  <li><a href="#">3</a></li>
-                  <li><a href="#">4</a></li>
-                  <li><a href="#">5</a></li>
-                  <li><a href="#">&raquo;</a></li>
-                </ul>
+              <div class="span12">
+                <br>
+                <p>
+                  cantidad total de servicios: <button class=="btn btn-default">{{ $cantidad }}</button>
+                  <a href="#" class="btn btn-primary">Ver todos</a>
+                </p>
               </div>
             </div>
             <!-- /widget-content -->

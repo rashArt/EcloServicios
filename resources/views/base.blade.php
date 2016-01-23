@@ -15,6 +15,7 @@
 <link href="{{ asset('lib/css/pages/plans.css') }}" rel="stylesheet">
 
 <link href="{{ asset('lib/css/pages/signin.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ asset('lib/img/icono-eclosoft.png') }}" rel="shorcut icon">
 
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
@@ -30,7 +31,10 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-      <a class="brand" href="{{route('login')}}"> Eclosoft - Servicios </a>
+      <a class="brand" href="{{route('login')}}">
+        <img src="{{ asset('lib/img/Monograma.jpg') }}" class="img-responsive img-logo">
+        Eclosoft - Servicios
+      </a>
       <div class="nav-collapse">
         <ul class="nav pull-right">
           @if (Auth::check())

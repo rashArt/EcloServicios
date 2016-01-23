@@ -6,7 +6,7 @@
 
 <div class="main">
     <div class="main-inner">
-        <div class="container">
+        <div class="container alto">
             <div class="row">
                 <div class="span12">
 
