@@ -84,9 +84,15 @@ Route::group(['middleware' => 'auth'], function () {
     );
 
     // Rutas para el usuario administrador
-    Route::group(['middleware' => 'admin:administrador'], function () {
+    Route::group(['middleware' => 'admin'], function () {
 
         // modulo de usuarios
+        Route::get('users/{id}/destroy',
+            [
+            'uses' => 'UsersController@destroy',
+            'as' => 'users.destroy'
+            ]
+        );
         Route::resource('users', 'UsersController');
         // nueva ruta funcion borrar del modulo users
         Route::get('users/{id}/destroy',
@@ -105,7 +111,6 @@ Route::group(['middleware' => 'auth'], function () {
             'as' => 'servicios/tipos.destroy'
             ]
         );
-
         Route::get('descargas',
             [
             'uses' => 'DescargasController@index',
@@ -156,6 +161,10 @@ Route::group(['middleware' => 'auth'], function () {
         'as' => 'servicios.destroy'
         ]
     );
+
+    // modulo de tipo de servicios
+    Route::resource('servicio/componentes', 'ComponenteController');
+
 
     Route::group(['middleware' => 'cliente:cliente'], function ()
     {

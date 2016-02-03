@@ -10,6 +10,8 @@ use App\Http\Requests\UpdServicioRequest;
 use App\Http\Controllers\Controller;
 use App\TipoServicio;
 use App\Servicio;
+use App\Componente;
+use App\ComponenteServicio;
 use App\User;
 use App\Imagen;
 use App\ServicioImagen;
@@ -122,12 +124,16 @@ class ServiciosController extends Controller
             }
         }
 
+        $comSer = ComponenteServicio::where('servicio_id', $id)->lists('componente_id');
+        $componentes = Componente::whereIn('id', $comSer)->orderBy('nombre', 'ASC')->get();
+
         $tecnico_id = $servicio->tecnico_id;
         $tecnico = User::find($tecnico_id);
 
         return view('servicios.show')
             ->with('tecnico', $tecnico)
-            ->with('servicio', $servicio);
+            ->with('servicio', $servicio)
+            ->with('componentes', $componentes);
     }
 
     /**

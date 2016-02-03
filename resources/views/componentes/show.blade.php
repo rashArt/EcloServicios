@@ -30,9 +30,8 @@
                 @endif
                 <a href="{{ URL::to('/descargas/servicio/' . $servicio->id) }}" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Imprimir" target="_BLANK"><i class="icon-download-alt"></i> Informe</a>
               </div>
-              <hr>
-              <h3>Datos de registro</h3>
-              <table class="table table-condensed table-bordered table-hover">
+              <br>
+              <table class="table table-condensed table-hover">
                 <thead>
                   <tr>
                     <th>Tecnico</th>
@@ -50,31 +49,8 @@
                   </tr>
                 </tbody>
               </table>
-              <hr>
-              <h3>Detalles de sus componentes</h3>
-              <div class="table-responsive">
-                <table class="table table-hover table-bordered">
-                  <thead>
-                    <tr>
-                      <th>Nombre</th>
-                      <th>Serial o código</th>
-                      <th>Descripción</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    @foreach ($componentes as $componente)
-                      <tr>
-                        <td>{{ $componente->nombre }}</td>
-                        <td>{{ $componente->serial }}</td>
-                        <td>{{ $componente->descripcion }}</td>
-                      </tr>
-                    @endforeach
-                  </tbody>
-                </table>
-              </div>
-              <hr>
               <h4>
-                El estado de su servicio se encuentra actualmente:
+                El estado de su servicio se encuentra actualmente
                 @if ($servicio->status == 1)
                   <span class="text-warning">Solicitado</span>
                 @elseif ($servicio->status == 2)
@@ -83,7 +59,7 @@
                   <span class="text-success">Finalizado</span>
                 @endif
               </h4>
-              <hr>
+
               <h6 class="page-header">
                 Las imagenes a continuación muestran cada uno de los procesos realizados a nuetros servicios
               </h6>

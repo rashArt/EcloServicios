@@ -24,4 +24,9 @@ class Servicio extends Model
     {
         return $this->belongsTo('App\ServicioImagen');
     }
+
+    public function componente()
+    {
+        return $this->belongsTo("App\Componente","componente_servicio")->withPivot('componente_id');
+    }
 }

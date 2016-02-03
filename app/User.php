@@ -45,4 +45,9 @@ class User extends Model implements AuthenticatableContract,
     {
         return $this->hasMany('App\Servicio');
     }
+
+    public function admin()
+    {
+        return $this->nivel === "administrador";
+    }
 }

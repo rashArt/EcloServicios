@@ -34,7 +34,7 @@
                 </div>
                 <hr>
               <div class="table-responsive">
-                <table class="table table-striped table-hover">
+                <table class="table table-hover table-condensed">
                   <thead>
                     <tr>
                       <th>Tipo de Servicio</th>
@@ -43,7 +43,9 @@
                         <th>Codigo del Tecnico</th>
                       @endif
                       <th>Estado</th>
-                      <th>Acciones</th>
+                      <th><i class="icon-edit"></i></th>
+                      <th><i class="icon-trash"></i></th>
+                      <th><i class="icon-download-alt"></i></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -69,9 +71,12 @@
                             @endif
                           </td>
                           <td>
-                            <a href="{{ URL::to('servicios/' . $serv->id) }}" class="btn btn-success"><i class="icon-eye-open"></i></a>
                             <a href="{{ URL::to('servicios/' . $serv->id . '/edit') }}" class="btn btn-primary"><i class="icon-edit"></i></a>
+                          </td>
+                          <td>
                             <a href="{{ URL::to('servicios/' . $serv->id . '/destroy') }}" class="btn btn-danger"><i class="icon-trash"></i></a>
+                          </td>
+                          <td>
                             <a href="{{ URL::to('/descargas/servicio/' . $serv->id) }}" target="_BLANK" class="btn btn-red"><i class="icon-download-alt"></i></a>
                           </td>
                         </tr>
