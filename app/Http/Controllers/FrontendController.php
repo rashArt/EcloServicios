@@ -116,4 +116,5 @@ class FrontendController extends Controller
 
         return redirect()->route('inicio');
     }
+
 }

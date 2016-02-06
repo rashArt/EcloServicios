@@ -76,23 +76,11 @@ Route::group(['middleware' => 'auth'], function () {
         ]
     );
 
-    Route::get('users/{id}',
-        [
-        'uses' => 'UsersController@show',
-        'as' => 'users.show'
-        ]
-    );
-
     // Rutas para el usuario administrador
     Route::group(['middleware' => 'admin'], function () {
 
         // modulo de usuarios
-        Route::get('users/{id}/destroy',
-            [
-            'uses' => 'UsersController@destroy',
-            'as' => 'users.destroy'
-            ]
-        );
+
         Route::resource('users', 'UsersController');
         // nueva ruta funcion borrar del modulo users
         Route::get('users/{id}/destroy',

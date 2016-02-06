@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\TipoServicio;
 use App\Servicio;
+use App\Componente;
+use App\ComponenteServicio;
 use Carbon\Carbon;
 use Anouar\Fpdf\Facades\Fpdf;
 
@@ -72,9 +74,13 @@ class DescargasController extends Controller
         $cliente_id = $servicio->cliente_id;
         $cliente = User::find($cliente_id);
 
+        $comSer = ComponenteServicio::where('servicio_id', $id)->lists('componente_id');
+        $componentes = Componente::whereIn('id', $comSer)->orderBy('nombre', 'ASC')->get();
+
         return view('descargas.servicio')
             ->with('tecnico', $tecnico)
             ->with('cliente', $cliente)
-            ->with('servicio', $servicio);
+            ->with('servicio', $servicio)
+            ->with('componentes', $componentes);
     }
 }

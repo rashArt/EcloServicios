@@ -51,10 +51,15 @@
 
                         <tr>
                           <td>{{ $serv->tipo->nombre }}</td>
+                          @if (Auth::user()->nivel === 'tecnico')
+                            <td>
+                              Cliente-0{{ $serv->cliente_id }}
+                            </td>
+                          @endif
+                          @if (Auth::user()->nivel === 'administrador')
                           <td>
                             <a href="{{ URL::to('users/' . $serv->cliente_id) }}" class="text-primary">Cliente-0{{ $serv->cliente_id }}</a>
                           </td>
-                          @if (Auth::user()->nivel === 'administrador')
                           <td>
                             <a href="{{ URL::to('users/' . $serv->tecnico_id) }}" class="text-primary">Tecnico-0{{ $serv->tecnico_id }}</a>
                           </td>

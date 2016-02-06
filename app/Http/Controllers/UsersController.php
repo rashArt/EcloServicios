@@ -15,11 +15,6 @@ use Laracasts\Flash\Flash;
 class UsersController extends Controller
 {
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $usuario = User::orderBy('id', 'DESC')->paginate(5);
@@ -27,22 +22,11 @@ class UsersController extends Controller
         return view('users.index')->with('usuario', $usuario);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('users.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(UserRequest $request)
     {
         $user = new User();
@@ -63,17 +47,8 @@ class UsersController extends Controller
         return redirect()->route('users.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        if (Auth::user()->nivel === 'cliente') {
-            return redirect('inicioCliente');
-        }
 
         $user = User::find($id);
         if (is_null ($user))
@@ -88,12 +63,6 @@ class UsersController extends Controller
         return view('users.show')->with('user', $user);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $user = User::find($id);
@@ -105,13 +74,6 @@ class UsersController extends Controller
         return view('users.edit')->with('usuario', $user);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $id_logueado = Auth::user()->id;
@@ -155,7 +117,7 @@ class UsersController extends Controller
             //cliente cambia perfil de usuario
             Flash::success('Se ha actualizado el perfil exitosamente!');
 
-            return redirect()->route('inicioCliente');
+            return redirect()->route('inicio');
         }
     }
 
@@ -182,8 +144,4 @@ class UsersController extends Controller
         return view('users.perfil')->with('usuario', $user);
     }
 
-    public function updPerfil(Request $request, $id)
-    {
-        
-    }
 }
