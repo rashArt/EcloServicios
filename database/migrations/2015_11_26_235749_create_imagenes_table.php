@@ -18,7 +18,7 @@ class CreateImagenesTable extends Migration
             $table->integer('servicio_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign('servicio_id')->references('id')->on('servicios');
+            $table->foreign('servicio_id')->references('id')->on('servicios')->onDelete('cascade');;
         });
     }
 

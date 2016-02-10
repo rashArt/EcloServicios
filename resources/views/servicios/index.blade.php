@@ -76,10 +76,28 @@
                           <td>
                             <a href="{{ URL::to('servicios/' . $serv->id) }}" class="btn btn-success"><i class="icon-eye-open"></i></a>
                             <a href="{{ URL::to('servicios/' . $serv->id . '/edit') }}" class="btn btn-primary"><i class="icon-edit"></i></a>
-                            <a href="{{ URL::to('servicios/' . $serv->id . '/destroy') }}" class="btn btn-danger"><i class="icon-trash"></i></a>
+                            <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#del{!!$serv->id!!}"><i class="icon-trash"></i></button>
                             <a href="{{ URL::to('/descargas/servicio/' . $serv->id) }}" target="_BLANK" class="btn btn-red"><i class="icon-download-alt"></i></a>
                           </td>
                         </tr>
+                      <!-- Modal -->
+                      <div class="modal fade" id="del{!!$serv->id!!}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                              <h4 class="modal-title" id="myModalLabel">Desea Eliminar?</h4>
+                            </div>
+                            <div class="modal-body">
+                              Se eliminará de forma permanente
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                              <a href="{{ URL::to('servicios/' . $serv->id . '/destroy') }}" class="btn btn-danger">Eliminar <i class="icon-trash"></i></a>
+                            </div>
+                          </div>
+                        </div>
+                      </div> <!-- / Modal -->
                     @endforeach
                   </tbody>
                 </table>

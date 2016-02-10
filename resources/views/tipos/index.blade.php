@@ -44,9 +44,27 @@
                                                 <a href="{{ URL::to('servicios/tipos/' . $tipo->id . '/edit') }}" class="btn btn-primary"><i class="icon-edit"></i></a>
                                             </td>
                                             <td>
-                                                <a href="{{ URL::to('servicios/tipos/' . $tipo->id . '/destroy') }}" class="btn btn-danger"><i class="icon-trash"></i></a>
+                                                <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#del{!!$tipo->id!!}"><i class="icon-trash"></i></button>
                                             </td>
                                         </tr>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="del{!!$tipo->id!!}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                          <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                              <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title" id="myModalLabel">Desea Eliminar?</h4>
+                                              </div>
+                                              <div class="modal-body">
+                                                Se eliminará de forma permanente
+                                              </div>
+                                              <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                                <a href="{{ URL::to('servicios/tipos/' . $tipo->id . '/destroy') }}" class="btn btn-danger">Eliminar <i class="icon-trash"></i></a>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div> <!-- / Modal -->
                                         @endforeach
                                     </tbody>
                                 </table>

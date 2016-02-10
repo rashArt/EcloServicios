@@ -116,6 +116,10 @@ class ServiciosController extends Controller
     {
 
         $servicio = Servicio::find($id);
+        if (is_null ($servicio))
+        {
+            abort(503);
+        }
 
         if (Auth::user()->nivel === 'cliente') {
             $cliente = Auth::user()->id;
@@ -260,6 +264,10 @@ class ServiciosController extends Controller
      */
     public function destroy($id)
     {
-        
+        Servicio::find($id)->delete();
+
+        Flash::warning('Se ha eliminado el servicio exitosamente!');
+
+        return redirect()->route('servicios.index');
     }
 }
