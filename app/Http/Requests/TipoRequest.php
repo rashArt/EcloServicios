@@ -24,7 +24,7 @@ class TipoRequest extends Request
     public function rules()
     {
         return [
-            'nombre'   => 'required|alpha_num|min:4|unique:tipos_servicios,nombre',
+            'nombre'   => 'required|min:4|unique:tipos_servicios,nombre',
         ];
     }
 }

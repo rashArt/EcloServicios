@@ -39,7 +39,7 @@
 
                     <div>
                       <button type="submit" class="btn btn-primary">Guardar</button>
-                      <button type="reset" class="btn">Cancelar</button>
+                      <button type="reset" class="btn">Limpiar</button>
                     </div> <!-- /form-actions -->
                   </fieldset>
                 {!! Form::close() !!}
